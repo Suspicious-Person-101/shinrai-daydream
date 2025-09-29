@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bn63smocutynr"]
-
-[ext_resource type="PackedScene" uid="uid://bn63smocutynr" path="res://3rdmap.tscn" id="1_esgco"]
-
-[node name="3rdmap" instance=ExtResource("1_esgco")]

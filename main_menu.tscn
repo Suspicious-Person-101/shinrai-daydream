@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cvb4db5u6gvfo" path="res://Street Fighter_ Duel.jpg" id="2_7vrkn"]
 [ext_resource type="FontFile" uid="uid://crymucnegqbwn" path="res://Sukajan Brush Demo.otf" id="2_fu7sn"]
 [ext_resource type="Script" uid="uid://c30exjorpfmdd" path="res://button.gd" id="3_jix8l"]
-[ext_resource type="Texture2D" uid="uid://bpl8v0hhc8hpc" path="res://PNG/Double/button_red.png" id="5_glbon"]
+[ext_resource type="Texture2D" uid="uid://bpl8v0hhc8hpc" path="res://sceness/PNG/Double/button_red.png" id="5_glbon"]
 
 [node name="MAIN MENU" type="Node2D"]
 position = Vector2(0, 4)
