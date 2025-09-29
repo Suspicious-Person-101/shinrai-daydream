@@ -1,1 +1,1 @@
-the exported web file is shirai-daydream.html
+the exported web file is index.html
