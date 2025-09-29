@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://negmo08frvbu"]
+
+[ext_resource type="AudioStream" uid="uid://d02exyg7malqa" path="res://battle-fighting-warrior-drums-375561.mp3" id="1_u25dd"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_u25dd")
+volume_db = -19.184
+autoplay = true

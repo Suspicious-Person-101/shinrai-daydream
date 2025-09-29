@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://bftsw3ox1v1s0"]
+
+[ext_resource type="VideoStream" uid="uid://clv7q40wbsxw4" path="res://download-_3_.ogv" id="1_vcscc"]
+
+[node name="2ndmap" type="Node2D"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = 283.0
+offset_top = 153.0
+offset_right = 1139.0
+offset_bottom = 567.0
+stream = ExtResource("1_vcscc")
+speed_scale = 0.8
+autoplay = true
+loop = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(600, 280)
+zoom = Vector2(1.875, 2.545)

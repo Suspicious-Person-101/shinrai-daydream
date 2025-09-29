@@ -1,0 +1,12 @@
+Button
+AudioStreamPlayer2D
+Camera2D
+Label
+CollisionShape2D
+StaticBody2D
+VideoStreamPlayer
+Timer
+Label      - Matches the "text" keyword.
+TextureRect
+ProgressBar
+TileMap

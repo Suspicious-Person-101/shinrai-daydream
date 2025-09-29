@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmfy5k2utshb7"]
+
+[ext_resource type="PackedScene" uid="uid://dytgbfnbbdv2k" path="res://main_menu.tscn" id="1_lti8b"]
+[ext_resource type="Script" uid="uid://c30exjorpfmdd" path="res://button.gd" id="2_ouk20"]
+[ext_resource type="FontFile" uid="uid://crymucnegqbwn" path="res://Sukajan Brush Demo.otf" id="3_mae5d"]
+[ext_resource type="Texture2D" uid="uid://cvb4db5u6gvfo" path="res://Street Fighter_ Duel.jpg" id="4_4hy44"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="MAIN MENU" parent="." instance=ExtResource("1_lti8b")]
+position = Vector2(-52, 38)
+
+[node name="Label2" type="Label" parent="MAIN MENU"]
+offset_left = -190.0
+offset_top = -38.0
+offset_right = 298.0
+offset_bottom = 187.0
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 150
+text = "Start"
+
+[node name="Button" type="Button" parent="MAIN MENU"]
+show_behind_parent = true
+offset_left = -424.0
+offset_top = -89.0
+offset_right = 507.0
+offset_bottom = 181.0
+script = ExtResource("2_ouk20")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-59, 47)
+zoom = Vector2(0.505, 0.53)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -997.0
+offset_top = 543.0
+offset_right = 1375.0
+offset_bottom = 717.0
+theme_override_fonts/font = ExtResource("3_mae5d")
+theme_override_font_sizes/font_size = 80
+text = "Sorry we couldn't finish because of time limit"
+
+[node name="StreetFighterDuel" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(1897, -445)
+scale = Vector2(3.137415, 3.706052)
+texture = ExtResource("4_4hy44")
+
+[connection signal="pressed" from="MAIN MENU/Button" to="MAIN MENU/Button" method="_on_pressed"]

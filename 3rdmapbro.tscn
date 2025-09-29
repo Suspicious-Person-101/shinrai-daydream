@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxxaxp5wv35qr"]
+
+[ext_resource type="VideoStream" uid="uid://clv7q40wbsxw4" path="res://download-_3_.ogv" id="1_wuh3g"]
+
+[node name="Node2D" type="VideoStreamPlayer"]
+offset_left = 538.0
+offset_top = 323.0
+offset_right = 1178.0
+offset_bottom = 595.0
+stream = ExtResource("1_wuh3g")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(382, 217)

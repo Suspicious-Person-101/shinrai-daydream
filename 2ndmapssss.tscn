@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://d1on1idckh2ry"]
+
+[ext_resource type="VideoStream" uid="uid://ddwdxmink0lba" path="res://download-_3_.ogv" id="1_h64oj"]
+[ext_resource type="PackedScene" path="res://jinkazama.tscn" id="2_ly4kr"]
+[ext_resource type="PackedScene" path="res://sceness/heitachi.tscn" id="3_lthx6"]
+[ext_resource type="FontFile" uid="uid://crymucnegqbwn" path="res://Sukajan Brush Demo.otf" id="4_k64kh"]
+[ext_resource type="Script" uid="uid://cvcoggqide2dh" path="res://1stmappsssb.gd" id="5_spu4l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h64oj"]
+size = Vector2(24, 285)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ly4kr"]
+size = Vector2(665, 61)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 641.0
+offset_bottom = 271.0
+stream = ExtResource("1_h64oj")
+autoplay = true
+loop = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(321, 146)
+zoom = Vector2(1.85, 2.7)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, 132.5)
+shape = SubResource("RectangleShape2D_h64oj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(641, 136)
+shape = SubResource("RectangleShape2D_h64oj")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(322.5, 279.5)
+shape = SubResource("RectangleShape2D_ly4kr")
+
+[node name="jinkazama" parent="." instance=ExtResource("2_ly4kr")]
+position = Vector2(558, 216)
+
+[node name="PLAYER" parent="." instance=ExtResource("3_lthx6")]
+position = Vector2(105, 213)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 25.0
+offset_top = 33.0
+offset_right = 83.0
+offset_bottom = 72.0
+theme_override_fonts/font = ExtResource("4_k64kh")
+theme_override_font_sizes/font_size = 20
+text = "Back"
+script = ExtResource("5_spu4l")
+
+[connection signal="pressed" from="Button" to="jinkazama" method="_on_button_pressed"]

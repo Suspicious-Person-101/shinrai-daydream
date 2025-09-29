@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://0a5xd1t15vo6"]
+
+[ext_resource type="Texture2D" uid="uid://bv2dkyla6p6in" path="res://assets/kenney_ui-pack (1)/PNG/Red/Default/button_rectangle_depth_gloss.png" id="1_ekxnf"]
+[ext_resource type="VideoStream" uid="uid://jsfwvx0mkyfi" path="res://assets/download-_2_.ogv" id="2_bqqt6"]
+
+[node name="MAIN MENU" type="Node2D"]
+position = Vector2(0, 4)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -444.0
+offset_top = -92.0
+offset_right = 508.0
+offset_bottom = 204.0
+texture = ExtResource("1_ekxnf")
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+offset_left = -465.0
+offset_top = 326.0
+offset_right = 487.0
+offset_bottom = 622.0
+texture = ExtResource("1_ekxnf")
+
+[node name="Label" type="Label" parent="TextureRect2"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = -1189.0
+offset_top = -498.0
+offset_right = 1171.0
+offset_bottom = 783.0
+stream = ExtResource("2_bqqt6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(16, 2)
+zoom = Vector2(0.5, 0.5)

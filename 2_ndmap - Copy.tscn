@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1gah3unhrby7"]
+
+[ext_resource type="PackedScene" uid="uid://bftsw3ox1v1s0" path="res://2ndmap.tscn" id="1_swd5q"]
+
+[node name="2ndmap" instance=ExtResource("1_swd5q")]
+
+[node name="CollisionShape2D" parent="VideoStreamPlayer/StaticBody2D" index="0"]
+position = Vector2(310, 280)
+
+[node name="CollisionShape2D3" parent="VideoStreamPlayer/StaticBody2D" index="2"]
+position = Vector2(663, 176)
+
+[node name="Camera2D" parent="." index="1"]
+position = Vector2(593, 287)
+zoom = Vector2(1.92, 2.555)

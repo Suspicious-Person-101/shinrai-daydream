@@ -1,0 +1,110 @@
+[gd_scene load_steps=8 format=3 uid="uid://cq4c8crv3cff4"]
+
+[ext_resource type="Texture2D" uid="uid://dbspq2w6ysnf6" path="res://download (1).jpg" id="1_pjpx6"]
+[ext_resource type="Texture2D" uid="uid://chbwgfcwhhoxa" path="res://sceness/PNG/Double/button_grey.png" id="2_ip15v"]
+[ext_resource type="FontFile" uid="uid://crymucnegqbwn" path="res://Sukajan Brush Demo.otf" id="3_dn11q"]
+[ext_resource type="Script" uid="uid://dm7upp7yv5toy" path="res://mapselectionss.gd" id="4_mhv1t"]
+[ext_resource type="Texture2D" uid="uid://xfbxxvrjglmh" path="res://download (2).png" id="4_x6ak5"]
+[ext_resource type="Texture2D" uid="uid://uv12djulkm6f" path="res://download (3).png" id="5_mhv1t"]
+[ext_resource type="Texture2D" uid="uid://48gdbluxxgo8" path="res://download.png" id="6_jgt5f"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Download(1)" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(575.75, 322.5)
+scale = Vector2(1.5653061, 1.5703883)
+texture = ExtResource("1_pjpx6")
+
+[node name="ButtonGrey" type="Sprite2D" parent="."]
+position = Vector2(576, 322)
+scale = Vector2(12.020833, 5.5833335)
+texture = ExtResource("2_ip15v")
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+offset_left = 86.0
+offset_top = -1.0
+offset_right = 1100.0
+offset_bottom = 209.0
+theme_override_fonts/font = ExtResource("3_dn11q")
+theme_override_font_sizes/font_size = 140
+text = "Map Selection"
+
+[node name="Button3" type="Button" parent="."]
+offset_left = 63.0
+offset_top = 240.0
+offset_right = 271.0
+offset_bottom = 382.0
+script = ExtResource("4_mhv1t")
+
+[node name="Button5" type="Button" parent="."]
+offset_left = 865.0
+offset_top = 240.0
+offset_right = 1073.0
+offset_bottom = 382.0
+
+[node name="Button4" type="Button" parent="."]
+offset_left = 474.0
+offset_top = 242.0
+offset_right = 682.0
+offset_bottom = 384.0
+
+[node name="Download(2)" type="Sprite2D" parent="."]
+position = Vector2(165.99998, 312)
+scale = Vector2(0.33359376, 0.4534162)
+texture = ExtResource("4_x6ak5")
+
+[node name="Download(3)" type="Sprite2D" parent="."]
+position = Vector2(577.75, 312.25)
+scale = Vector2(0.32578126, 0.5275737)
+texture = ExtResource("5_mhv1t")
+
+[node name="Download" type="Sprite2D" parent="."]
+position = Vector2(969, 309)
+scale = Vector2(0.3312501, 0.3828125)
+texture = ExtResource("6_jgt5f")
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 928.0
+offset_top = 385.0
+offset_right = 1010.0
+offset_bottom = 416.0
+theme_override_fonts/font = ExtResource("3_dn11q")
+theme_override_font_sizes/font_size = 20
+text = "Qingyun"
+
+[node name="Label3" type="Label" parent="."]
+offset_left = 536.0
+offset_top = 384.0
+offset_right = 605.0
+offset_bottom = 415.0
+theme_override_fonts/font = ExtResource("3_dn11q")
+theme_override_font_sizes/font_size = 20
+text = "Xinhuo"
+
+[node name="Label4" type="Label" parent="."]
+offset_left = 129.0
+offset_top = 388.0
+offset_right = 202.0
+offset_bottom = 419.0
+theme_override_fonts/font = ExtResource("3_dn11q")
+theme_override_font_sizes/font_size = 20
+text = "Tianjie"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 326)
+
+[node name="Button" type="Button" parent="."]
+offset_left = 21.0
+offset_top = 553.0
+offset_right = 127.0
+offset_bottom = 622.0
+theme_override_fonts/font = ExtResource("3_dn11q")
+theme_override_font_sizes/font_size = 40
+text = "Back"
+
+[connection signal="pressed" from="Button3" to="Button3" method="_on_pressed"]
+[connection signal="pressed" from="Button5" to="Button3" method="_on_button_5_pressed"]
+[connection signal="pressed" from="Button4" to="Button3" method="_on_button_4_pressed"]
+[connection signal="pressed" from="Button" to="Button3" method="_on_button_pressed"]

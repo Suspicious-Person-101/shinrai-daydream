@@ -1,0 +1,62 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmx330e4ri3bm"]
+
+[ext_resource type="VideoStream" uid="uid://cjxybp4f6b8s1" path="res://download-_2_.ogv" id="1_0d8r0"]
+[ext_resource type="PackedScene" path="res://jinkazama.tscn" id="2_w7m7f"]
+[ext_resource type="PackedScene" path="res://sceness/heitachi.tscn" id="3_2y45t"]
+[ext_resource type="FontFile" uid="uid://crymucnegqbwn" path="res://Sukajan Brush Demo.otf" id="4_rkebv"]
+[ext_resource type="Script" uid="uid://1d1pkfrinyyq" path="res://2ndmapssb.gd" id="5_cn4ff"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0d8r0"]
+size = Vector2(50, 330)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w7m7f"]
+size = Vector2(648, 54)
+
+[node name="2ndmapsss" type="Node2D"]
+position = Vector2(109, 100)
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_top = -9.0
+offset_right = 1161.0
+offset_bottom = 637.0
+stream = ExtResource("1_0d8r0")
+speed_scale = 0.8
+autoplay = true
+loop = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(318, 168)
+zoom = Vector2(1.82, 2.4)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-12, 154)
+shape = SubResource("RectangleShape2D_0d8r0")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(650, 159)
+shape = SubResource("RectangleShape2D_0d8r0")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(314, 299)
+shape = SubResource("RectangleShape2D_w7m7f")
+
+[node name="jinkazama" parent="." instance=ExtResource("2_w7m7f")]
+position = Vector2(542, 237)
+
+[node name="PLAYER" parent="." instance=ExtResource("3_2y45t")]
+position = Vector2(111, 237)
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+offset_left = 23.0
+offset_top = 41.0
+offset_right = 81.0
+offset_bottom = 80.0
+theme_override_fonts/font = ExtResource("4_rkebv")
+theme_override_font_sizes/font_size = 20
+text = "Back"
+script = ExtResource("5_cn4ff")
+
+[connection signal="pressed" from="Button" to="jinkazama" method="_on_button_pressed"]

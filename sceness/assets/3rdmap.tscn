@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://bn63smocutynr"]
+
+[ext_resource type="VideoStream" uid="uid://blfpsxfmcqbep" path="res://download.ogv" id="1_esgco"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_esgco"]
+size = Vector2(651, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejrhd"]
+size = Vector2(17, 389)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_crto5"]
+size = Vector2(17, 377)
+
+[node name="3rdmap" type="Node2D"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+texture_filter = 1
+offset_left = 257.0
+offset_top = 120.0
+offset_right = 897.0
+offset_bottom = 504.0
+stream = ExtResource("1_esgco")
+speed_scale = 0.8
+autoplay = true
+loop = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="VideoStreamPlayer"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VideoStreamPlayer/StaticBody2D"]
+position = Vector2(315.5, 368)
+shape = SubResource("RectangleShape2D_esgco")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="VideoStreamPlayer/StaticBody2D"]
+position = Vector2(-1.5, 187.5)
+shape = SubResource("RectangleShape2D_ejrhd")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="VideoStreamPlayer/StaticBody2D"]
+position = Vector2(633.5, 195.5)
+shape = SubResource("RectangleShape2D_crto5")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(574, 325)
+zoom = Vector2(1.8, 1.8)

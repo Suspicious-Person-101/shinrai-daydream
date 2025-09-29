@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://c0jm07fhtkys1"]
+
+[ext_resource type="PackedScene" uid="uid://cptju4ufcfyxp" path="res://3rdmapplss.tscn" id="1_yimkj"]
+[ext_resource type="FontFile" uid="uid://crymucnegqbwn" path="res://Sukajan Brush Demo.otf" id="2_f6qp0"]
+[ext_resource type="Script" uid="uid://b14smq3vvg8rk" path="res://next7.gd" id="2_nfr5o"]
+
+[node name="3rdmap" instance=ExtResource("1_yimkj")]
+
+[node name="Button" type="Button" parent="." index="12"]
+offset_left = 792.0
+offset_top = 436.0
+offset_right = 864.0
+offset_bottom = 457.0
+script = ExtResource("2_nfr5o")
+
+[node name="Label7" type="Label" parent="." index="13"]
+texture_filter = 1
+offset_left = 804.0
+offset_top = 435.0
+offset_right = 873.0
+offset_bottom = 466.0
+theme_override_fonts/font = ExtResource("2_f6qp0")
+text = "NEXT"

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://5f3pr3wwuyr8"]
+
+[ext_resource type="Texture2D" uid="uid://bx8847wxo3uw2" path="res://Player 1.png" id="1_y4s6r"]
+[ext_resource type="FontFile" uid="uid://crymucnegqbwn" path="res://Sukajan Brush Demo.otf" id="2_dyepv"]
+[ext_resource type="Script" uid="uid://b03sw4mx1wjf4" path="res://Controlssmenuu.gd" id="3_5bmc7"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Player1" type="Sprite2D" parent="."]
+position = Vector2(577.75, 324.75003)
+scale = Vector2(0.6013021, 0.5986112)
+texture = ExtResource("1_y4s6r")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(577, 325)
+
+[node name="Button" type="Button" parent="."]
+texture_filter = 1
+offset_left = -2.0
+offset_top = 590.0
+offset_right = 112.0
+offset_bottom = 643.0
+theme_override_fonts/font = ExtResource("2_dyepv")
+theme_override_font_sizes/font_size = 25
+text = "BACK"
+script = ExtResource("3_5bmc7")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

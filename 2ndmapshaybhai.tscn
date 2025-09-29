@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3sggh0hnn7uf"]
+
+[ext_resource type="PackedScene" uid="uid://bacpwkupowk8w" path="res://2_ndmap.tscn" id="1_sugll"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="2ndmap" parent="." instance=ExtResource("1_sugll")]
+position = Vector2(-25, -43)

@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://b00wn4s05b22l"]
+
+[ext_resource type="VideoStream" uid="uid://b7gtfides5qh6" path="res://Last-Blade-1-Kagami_s-Stage-_1__1.ogv" id="1_8ytog"]
+[ext_resource type="PackedScene" uid="uid://c5am4188cugob" path="res://scenes/heitachi.tscn" id="2_5mta3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ytog"]
+size = Vector2(819, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmx0q"]
+size = Vector2(41, 408)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wn84x"]
+size = Vector2(69, 408)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(479, 284)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(40.5, 157)
+shape = SubResource("RectangleShape2D_8ytog")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(440.5, 1)
+shape = SubResource("RectangleShape2D_hmx0q")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-386.5, -1)
+shape = SubResource("RectangleShape2D_wn84x")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_left = 112.0
+offset_top = 77.0
+offset_right = 912.0
+offset_bottom = 486.0
+stream = ExtResource("1_8ytog")
+speed_scale = 0.78
+autoplay = true
+loop = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(512, 256)
+zoom = Vector2(1.45, 2.06)
+
+[node name="PLAYER" parent="." instance=ExtResource("2_5mta3")]
+position = Vector2(219, 343)

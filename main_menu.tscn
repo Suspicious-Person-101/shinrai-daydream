@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://dytgbfnbbdv2k"]
+
+[ext_resource type="Texture2D" uid="uid://bv2dkyla6p6in" path="res://assets/kenney_ui-pack (1)/PNG/Red/Default/button_rectangle_depth_gloss.png" id="1_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://cvb4db5u6gvfo" path="res://Street Fighter_ Duel.jpg" id="2_7vrkn"]
+[ext_resource type="FontFile" uid="uid://crymucnegqbwn" path="res://Sukajan Brush Demo.otf" id="2_fu7sn"]
+[ext_resource type="Script" uid="uid://c30exjorpfmdd" path="res://button.gd" id="3_jix8l"]
+[ext_resource type="Texture2D" uid="uid://bpl8v0hhc8hpc" path="res://PNG/Double/button_red.png" id="5_glbon"]
+
+[node name="MAIN MENU" type="Node2D"]
+position = Vector2(0, 4)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -432.0
+offset_top = -132.0
+offset_right = 412.0
+offset_bottom = 129.0
+texture = ExtResource("1_ekxnf")
+
+[node name="Button" type="Button" parent="TextureRect"]
+show_behind_parent = true
+layout_mode = 0
+offset_left = -9.0
+offset_top = 5.0
+offset_right = 846.0
+offset_bottom = 256.0
+script = ExtResource("3_jix8l")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(16, 2)
+zoom = Vector2(0.5, 0.5)
+
+[node name="StreetFighterDuel" type="Sprite2D" parent="."]
+show_behind_parent = true
+texture_filter = 1
+position = Vector2(20, 5)
+scale = Vector2(3.1340137, 3.773775)
+texture = ExtResource("2_7vrkn")
+
+[node name="Button" type="Button" parent="."]
+offset_left = -302.0
+offset_top = 249.0
+offset_right = 313.0
+offset_bottom = 482.0
+
+[node name="ButtonRed" type="Sprite2D" parent="."]
+position = Vector2(7, 366.00003)
+scale = Vector2(6.6562505, 5.2083335)
+texture = ExtResource("5_glbon")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -242.0
+offset_top = 300.0
+offset_right = 246.0
+offset_bottom = 451.0
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 100
+text = "Controls"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -581.0
+offset_top = -583.0
+offset_right = 581.0
+offset_bottom = -134.0
+theme_override_colors/font_color = Color(1, 0, 0.24705882, 1)
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 300
+text = "Shinrai"
+
+[node name="Label3" type="Label" parent="."]
+texture_filter = 1
+offset_left = -323.0
+offset_top = -137.0
+offset_right = 328.0
+offset_bottom = 163.0
+theme_override_colors/font_color = Color(0.012617188, 0.012617188, 0.012617188, 1)
+theme_override_fonts/font = ExtResource("2_fu7sn")
+theme_override_font_sizes/font_size = 200
+text = "Start"
+
+[connection signal="pressed" from="TextureRect/Button" to="TextureRect/Button" method="_on_pressed"]
+[connection signal="pressed" from="Button" to="TextureRect/Button" method="_on_button_pressed"]

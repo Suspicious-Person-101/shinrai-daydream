@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://dkom2lmi877i6"]
+
+[ext_resource type="Texture2D" uid="uid://drg6ll57iu0wh" path="res://PNG/Double/banner_modern.png" id="1_223ah"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(601, 354)
+
+[node name="BannerModern" type="Sprite2D" parent="."]
+position = Vector2(599, 326)
+texture = ExtResource("1_223ah")
