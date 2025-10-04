@@ -114,6 +114,7 @@ func start_attack() -> void:
 	
 	# Wait for animation to finish
 	await animated_sprite.animation_finished
+	print("Attack finished! Monitoring disabled")
 	
 	# Disable attack hitbox
 	attack_area.monitoring = false
@@ -126,6 +127,10 @@ func _on_hitbox_area_entered(area: Area2D) -> void:
 		var attacker = area.get_parent()
 		if attacker != self:  # Don't damage yourself
 			take_damage(ATTACK_DAMAGE)
+			print("Taking damage from: ", attacker.name)
+			take_damage(ATTACK_DAMAGE)
+	else:
+		print("Damage blocked - can_take_damage: ", can_take_damage, " area name: ", area.name)
 
 
 func take_damage(damage: int) -> void:
