@@ -1,13 +1,13 @@
-[gd_scene load_steps=46 format=3 uid="uid://cysf73s4cqmj8"]
+[gd_scene load_steps=47 format=3 uid="uid://cysf73s4cqmj8"]
 
 [ext_resource type="Script" uid="uid://cdof3t5ibon7a" path="res://heitachi.gd" id="1_1qxi3"]
-[ext_resource type="Texture2D" uid="uid://cs0ar51jnupi" path="res://sceness/assets/650a4432-60a7-463e-85f5-7543eae30c98.png" id="1_hlssm"]
-[ext_resource type="Texture2D" uid="uid://cg7wy10joh0ri" path="res://sceness/assets/first3.png" id="2_635q5"]
-[ext_resource type="Texture2D" uid="uid://w6ekvr7g3d68" path="res://sceness/assets/heitachi bg removed.png" id="2_m4rcp"]
-[ext_resource type="Texture2D" uid="uid://v5a546tl51dj" path="res://sceness/assets/22.png" id="2_wjvd1"]
-[ext_resource type="Texture2D" uid="uid://r3uo56vsay3v" path="res://sceness/assets/damaged.png" id="3_bmpqe"]
-[ext_resource type="Texture2D" uid="uid://b2s5qdkvntsvt" path="res://sceness/assets/4444.png" id="3_m4rcp"]
-[ext_resource type="Texture2D" uid="uid://boropd7pb4te0" path="res://sceness/assets/fbbeb8b2-f4ed-4251-870a-a9d0d3dbe1dd (2).png" id="4_cosi3"]
+[ext_resource type="Texture2D" uid="uid://cs0ar51jnupi" path="res://assets/650a4432-60a7-463e-85f5-7543eae30c98.png" id="1_hlssm"]
+[ext_resource type="Texture2D" uid="uid://cg7wy10joh0ri" path="res://assets/first3.png" id="2_635q5"]
+[ext_resource type="Texture2D" uid="uid://w6ekvr7g3d68" path="res://assets/heitachi bg removed.png" id="2_m4rcp"]
+[ext_resource type="Texture2D" uid="uid://v5a546tl51dj" path="res://assets/22.png" id="2_wjvd1"]
+[ext_resource type="Texture2D" uid="uid://r3uo56vsay3v" path="res://assets/damaged.png" id="3_bmpqe"]
+[ext_resource type="Texture2D" uid="uid://b2s5qdkvntsvt" path="res://assets/4444.png" id="3_m4rcp"]
+[ext_resource type="Texture2D" uid="uid://boropd7pb4te0" path="res://assets/fbbeb8b2-f4ed-4251-870a-a9d0d3dbe1dd (2).png" id="4_cosi3"]
 [ext_resource type="Script" uid="uid://43p83b8xky7c" path="res://sceness/attack_area2.gd" id="9_m55tn"]
 [ext_resource type="PackedScene" uid="uid://56axpp6ou6bl" path="res://healthbar.tscn" id="10_m55tn"]
 
@@ -273,6 +273,9 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lprol"]
+size = Vector2(35, 57.5)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m55tn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m55tn"]
@@ -295,7 +298,12 @@ frame_progress = 1.0
 position = Vector2(0, -1)
 collision_layer = 7
 collision_mask = 7
+monitorable = false
 script = ExtResource("9_m55tn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(12.5, 8.25)
+shape = SubResource("RectangleShape2D_lprol")
 
 [node name="HealthBarContainer" type="Node2D" parent="."]
 
@@ -308,5 +316,6 @@ size_flags_horizontal = 0
 theme_override_styles/background = SubResource("StyleBoxEmpty_m55tn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(3.75, -15.5)
+visible = false
+position = Vector2(4, -15)
 shape = SubResource("RectangleShape2D_m55tn")
