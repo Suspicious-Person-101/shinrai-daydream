@@ -1,115 +1,154 @@
 extends CharacterBody2D
 
-# === Constants ===
-const SPEED = 200
-const JUMP_VELOCITY = -350
-const GRAVITY = 900
+# Constants
+const SPEED = 200.0
+const JUMP_VELOCITY = -350.0
+const GRAVITY = 900.0
 const ATTACK_DAMAGE = 40
 
-# === Nodes ===
+# Node references
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var attack_area: Area2D = $AttackArea
 @onready var health_bar: ProgressBar = $HealthBarContainer/healthbar
-@onready var HealthBarContainer: Node2D = $HealthBarContainer
-# === States ===
-var is_crouching = false
-var is_attacking = false
+@onready var hitbox: Area2D = $Hitbox  # This receives damage
 
-# === Health ===
-var max_health = 100
-var health = 99
+# State
+var is_attacking := false
+var can_take_damage := true
 
-# === Input config per player ===
-var input_left = "ui_left"
-var input_right = "ui_right"
-var input_down = "ui_down"
-var input_jump = "ui_accept"
-var input_attack = "l"
+# Health
+var max_health := 100
+var health := 100
 
-# === Attack cooldown ===
-var attack_cooldown = 0.5
-var attack_timer = 0.0
+# Input mappings for PLAYER 1
+var input_left := "ui_left"
+var input_right := "ui_right"
+var input_down := "ui_down"
+var input_jump := "ui_accept"
+var input_attack := "l"
+
+# Attack cooldown
+var attack_cooldown := 0.5
+var attack_timer := 0.0
+
+# Damage invulnerability
+var damage_cooldown := 0.3
+var damage_timer := 0.0
+
 
 func _ready() -> void:
+	# Initialize health bar
 	health_bar.set_health_bar(health, max_health)
+	
+	# Connect hitbox to receive damage
+	if hitbox:
+		hitbox.area_entered.connect(_on_hitbox_area_entered)
+	
+	# Make sure attack area is disabled initially
 	attack_area.monitoring = false
 
-	attack_area.body_entered.connect(Callable(self, "_on_attack_area_body_entered"))
-func _physics_process(delta: float) -> void: 
-	# Gravity
+
+func _physics_process(delta: float) -> void:
+	# Apply gravity
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
-
-	# Update attack timer
+	
+	# Update timers
 	if attack_timer > 0:
 		attack_timer -= delta
-
-	# Movement input
-	var direction = Vector2.ZERO
-	if Input.is_action_pressed(input_right):
-		direction.x += 1
-	if Input.is_action_pressed(input_left):
-		direction.x -= 1
-
-	# Jump
-	if Input.is_action_just_pressed(input_jump) and is_on_floor() and not is_crouching and not is_attacking:
+	if damage_timer > 0:
+		damage_timer -= delta
+		can_take_damage = false
+	else:
+		can_take_damage = true
+	
+	# Get movement direction
+	var direction := Input.get_axis(input_left, input_right)
+	
+	# Handle jump
+	if Input.is_action_just_pressed(input_jump) and is_on_floor() and not is_attacking:
 		velocity.y = JUMP_VELOCITY
-
-	# Crouch
-	is_crouching = Input.is_action_pressed(input_down) and is_on_floor()
-
-	# Attack
+	
+	# Handle attack
 	if Input.is_action_just_pressed(input_attack) and not is_attacking and attack_timer <= 0:
-		attack_timer = attack_cooldown
-		await _perform_attack()  # <-- new one-shot mechanic
-		return  # skip movement during attack start
-
-	# Movement lock while attacking
-	if not is_crouching and not is_attacking:
-		velocity.x = direction.x * SPEED
+		start_attack()
+	
+	# Handle movement (disabled during attack)
+	if not is_attacking:
+		velocity.x = direction * SPEED
 	else:
 		velocity.x = 0
-
+	
+	# Apply movement
 	move_and_slide()
-	_update_animation(direction)
+	
+	# Update animations
+	update_animation(direction)
 
-func _update_animation(direction: Vector2) -> void:
+
+func update_animation(direction: float) -> void:
+	# Flip sprite based on direction
+	if direction != 0 and not is_attacking:
+		animated_sprite.flip_h = direction < 0
+	
+	# Play appropriate animation
 	if is_attacking:
-		animated_sprite.play("attack")
+		return  # Attack animation is handled by start_attack()
 	elif not is_on_floor():
 		animated_sprite.play("jump")
-	elif is_crouching:
+	elif Input.is_action_pressed(input_down) and is_on_floor():
 		animated_sprite.play("crouch")
-	elif direction.x != 0:
+	elif direction != 0:
 		animated_sprite.play("walk")
-		animated_sprite.flip_h = direction.x < 0
 	else:
 		animated_sprite.play("idle")
 
-# === NEW attack mechanic using await ===
-func _perform_attack() -> void:
+
+func start_attack() -> void:
 	is_attacking = true
+	attack_timer = attack_cooldown
 	animated_sprite.play("attack")
+	
+	# Enable attack hitbox
 	attack_area.monitoring = true
-
-	# Wait until the attack animation finishes (one-shot)
+	
+	# Wait for animation to finish
 	await animated_sprite.animation_finished
-	_end_attack()
-
-func _end_attack() -> void:
-	is_attacking = false
+	
+	# Disable attack hitbox
 	attack_area.monitoring = false
+	is_attacking = false
 
-# === Damage / Health ===
+
+func _on_hitbox_area_entered(area: Area2D) -> void:
+	# Check if the area is an attack from another character
+	if area.name == "AttackArea" and can_take_damage:
+		var attacker = area.get_parent()
+		if attacker != self:  # Don't damage yourself
+			take_damage(ATTACK_DAMAGE)
+
+
 func take_damage(damage: int) -> void:
+	if not can_take_damage:
+		return
+	
 	health -= damage
-	if health < 0: health = 0
+	health = clamp(health, 0, max_health)
+	
+	# Update health bar
 	health_bar.change_health(-damage)
-	animated_sprite.play("damaged")
+	
+	# Set invulnerability period
+	damage_timer = damage_cooldown
+	
+	# Play damage animation
+	if health > 0:
+		animated_sprite.play("damaged")
+		await animated_sprite.animation_finished
+	else:
+		die()
 
-func _on_death() -> void:
+
+func die() -> void:
+	# Play death animation or effect here
 	queue_free()
-
-
-func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://mapselectionss.tscn")

@@ -46,8 +46,8 @@ func _ready() -> void:
 	
 	# Make sure attack area is disabled initially
 	attack_area.monitoring = false
-
-
+	
+	
 func _physics_process(delta: float) -> void:
 	# Apply gravity
 	if not is_on_floor():

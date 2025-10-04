@@ -1,6 +1,6 @@
 [gd_scene load_steps=47 format=3 uid="uid://0d56kb6at1gw"]
 
-[ext_resource type="Texture2D" uid="uid://bpvh5nwrqeta3" path="res://sceness/assets/jinkazamabgremoved.png" id="1_2txea"]
+[ext_resource type="Texture2D" uid="uid://bpvh5nwrqeta3" path="res://assets/jinkazamabgremoved.png" id="1_2txea"]
 [ext_resource type="Script" uid="uid://b0p1jhfdohue5" path="res://jinkazama.gd" id="1_coo56"]
 [ext_resource type="PackedScene" uid="uid://56axpp6ou6bl" path="res://healthbar.tscn" id="3_cuigg"]
 
