@@ -5,9 +5,8 @@ extends ProgressBar
 func set_health_bar(health, maxHealth):
 	max_value = maxHealth
 	value = health
-	
 	label.text = str(health)
 	
 func change_health(newValue):
-		value += newValue
-		label.text = str(value)
+	value += newValue
+	label.text = str(value)

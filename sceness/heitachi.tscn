@@ -274,7 +274,6 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lprol"]
-size = Vector2(35, 57.5)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m55tn"]
 
@@ -302,7 +301,6 @@ monitorable = false
 script = ExtResource("9_m55tn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(12.5, 8.25)
 shape = SubResource("RectangleShape2D_lprol")
 
 [node name="HealthBarContainer" type="Node2D" parent="."]

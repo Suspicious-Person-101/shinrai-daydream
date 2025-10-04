@@ -9,7 +9,7 @@ bg_color = Color(0.57642937, 0, 0.087620996, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_iywrq"]
 
-[node name="healthbar" type="ProgressBar"]
+[node name="healthbarr" type="ProgressBar"]
 offset_left = 165.0
 offset_top = 20.0
 offset_right = 575.0
